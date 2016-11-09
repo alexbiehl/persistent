@@ -1,0 +1,50 @@
+name:            persistent-mysql-haskell
+version:         2.6.0.1
+license:         MIT
+license-file:    LICENSE
+author:          Alexander Biehl <alexbiehl@gmail.com>
+maintainer:      Alexander Biehl <alexbiehl@gmail.com>
+synopsis:        Backend for the persistent library using MySQL database server.
+category:        Database, Yesod
+stability:       Stable
+cabal-version:   >= 1.6
+build-type:      Simple
+homepage:        http://www.yesodweb.com/book/persistent
+bug-reports:     https://github.com/yesodweb/persistent/issues
+description:
+    This package contains a backend for persistent using the
+    MySQL database server.  Internally it uses the @mysql-simple@
+    and @mysql@ packages in order to access the database.
+    .
+    This package supports only MySQL 5.1 and above.  However, it
+    has been tested only on MySQL 5.5.
+    Only the InnoDB storage engine is officially supported.
+    .
+    Known problems:
+    .
+    * This package does not support statements inside other
+      statements.
+extra-source-files: ChangeLog.md
+
+library
+    build-depends:   aeson                 >= 0.6.2
+                   , base                  >= 4.6        && < 5
+                   , blaze-builder
+                   , bytestring            >= 0.9
+                   , conduit               >= 0.5.3
+                   , containers            >= 0.2
+                   , io-streams
+                   , monad-control         >= 0.2
+                   , monad-logger
+                   , mysql-haskell         >= 0.6
+                   , persistent            >= 2.6      && < 3
+                   , resource-pool
+                   , resourcet             >= 0.4.10
+                   , text                  >= 0.11.0.6
+                   , transformers          >= 0.2.1
+    exposed-modules: Database.Persist.MySQL
+    ghc-options:     -Wall
+
+source-repository head
+  type:     git
+  location: git://github.com/yesodweb/persistent.git
